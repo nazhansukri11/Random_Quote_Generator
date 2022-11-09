@@ -1,1 +1,1 @@
-## [A Random Quote Generator](https://github.com/nazhansukri11/Random_Quote_Generator)
+## [A Random Quote Generator](https://nazhansukri11.github.io/Random_Quote_Generator/)
