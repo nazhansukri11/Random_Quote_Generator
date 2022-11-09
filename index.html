@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink">
+    <title>Random Quote</title>
+    
+    <script>
+
+        //Quote object
+        const QUOTE=[
+           {
+            quote:"The greatest glory in living lies not in never falling, but in rising every time we fall.",
+            author:"Nelson Mandela"
+        },{
+            quote:"The way to get started is to quit talking and begin doing.",
+            author:"Walt Disney"
+        },{
+            quote:"It is during our darkest moments that we must focus to see the light.",
+            author:"Aristotle"
+        }
+        ];
+
+        //when page is load
+        window.onload=init;
+        function init(){
+            generateQuote()
+        }
+
+        //generate Quote when click button
+        function generateQuote(){
+            let quoteSize=QUOTE.length;
+            let randomIndex=Math.floor(Math.random()*quoteSize);
+            let randomQuoteData=QUOTE[randomIndex];
+
+            let testTwitter="https://twitter.com/intent/tweet?hashtags=quotes&amp;"
+
+            // add quote
+            let quoteInAPIFormat=randomQuoteData.quote.replace(/ /g,"%20")
+            testTwitter+=quoteInAPIFormat;
+
+            //add author
+            let authorInAPIFormat=randomQuoteData.author.replace(/ /g,"%20")
+            testTwitter+=" - "+authorInAPIFormat
+            
+            
+            document.getElementById("tweet-quote").href=testTwitter;
+            document.getElementById("text").innerText=randomQuoteData.quote;
+            document.getElementById("author").innerText=randomQuoteData.author;
+        }
+    </script>
+
+    <style>
+        *{
+            text-align:center;
+            padding:8px;
+            font-size: 20px;
+        }
+    </style> 
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="row py-5 col-md-8 offset-2">
+            <wrapper id="quote-box">
+                    <div class="card">
+                        <div class="card-header text-center">Quote Generator</div>
+                        <div class="card-body">
+                            <h5 class="card-title"><div id="text"></div></h5>
+                            <div id="author"></div>
+                            <button id="new-quote" onClick="generateQuote()" class="btn btn-success">New Quote</button>
+                            <a class="btn btn-primary" id="tweet-quote" title="Tweet this quote!" target="_blank" href="#">Tweet Quote</a>
+                        </div>
+                    </div>
+            </wrapper>
+        </div>
+    </div>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
